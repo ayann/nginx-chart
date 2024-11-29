@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: production
+  namespace: trisotech-prod
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: trisotech-prod
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: nginx
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values/prod.yaml
