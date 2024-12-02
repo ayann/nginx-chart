@@ -1,6 +1,7 @@
 spec:
   destination:
     server: https://kubernetes.default.svc
+    namespace: app-trisotech-des
   source:
     repoURL: https://github.com/ayann/nginx-chart.git
     targetRevision: HEAD
